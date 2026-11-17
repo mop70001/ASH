@@ -1,0 +1,1158 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday, My Love</title>
+    <!-- Tailwind CSS for responsive layout and utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display for romantic serif headings & Plus Jakarta Sans for clean body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        script: ['"Great Vibes"', 'cursive'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        velvet: {
+                            950: '#16080f',
+                            900: '#240c18',
+                            800: '#381225',
+                            700: '#4f1934',
+                        },
+                        rosegold: {
+                            200: '#f8d7da',
+                            300: '#f3b8c0',
+                            400: '#e8909c',
+                            500: '#d46a7a',
+                            600: '#b5495a',
+                        },
+                        champagne: {
+                            200: '#fbf1d8',
+                            300: '#f5dfa8',
+                            400: '#ecc56e',
+                            500: '#d4a33b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Romantic Velvet Background & Smooth Scrolling */
+        body {
+            background: radial-gradient(circle at 50% 20%, #381225 0%, #1d0913 55%, #11050b 100%);
+            color: #fdf2f4;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Ambient Glowing Orbs */
+        .glow-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.45;
+            animation: floatOrb 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(25px, -30px) scale(1.15); }
+        }
+
+        /* Floating Background Hearts */
+        .floating-heart {
+            position: fixed;
+            bottom: -40px;
+            pointer-events: none;
+            z-index: 1;
+            animation: riseUp linear forwards;
+            opacity: 0;
+        }
+
+        @keyframes riseUp {
+            0% {
+                transform: translateY(0) scale(0.7) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.55;
+            }
+            85% {
+                opacity: 0.35;
+            }
+            100% {
+                transform: translateY(-110vh) scale(1.25) rotate(25deg);
+                opacity: 0;
+            }
+        }
+
+        /* 3D Interactive Gift Box Styling */
+        .gift-stage {
+            perspective: 1000px;
+        }
+
+        .gift-box-container {
+            position: relative;
+            width: 190px;
+            height: 190px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            animation: gentleFloat 3.2s ease-in-out infinite;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .gift-box-container:hover {
+            transform: scale(1.06);
+        }
+
+        .gift-box-container:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px) rotate(-1.5deg); }
+            50% { transform: translateY(-14px) rotate(1.5deg); }
+        }
+
+        /* Box Base */
+        .gift-body {
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            width: 160px;
+            height: 130px;
+            background: linear-gradient(135deg, #b5495a 0%, #7d2536 55%, #521320 100%);
+            border-radius: 12px;
+            box-shadow: 0 22px 45px rgba(0, 0, 0, 0.65), inset 0 2px 10px rgba(255, 220, 225, 0.35);
+            overflow: hidden;
+        }
+
+        /* Vertical Gold/Champagne Ribbon on Base */
+        .gift-body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 100%;
+            background: linear-gradient(90deg, #d4a33b, #fbf1d8, #ecc56e, #b88424);
+            box-shadow: 0 0 15px rgba(236, 197, 110, 0.5);
+        }
+
+        /* Gift Lid */
+        .gift-lid {
+            position: absolute;
+            top: 34px;
+            left: 7px;
+            width: 176px;
+            height: 38px;
+            background: linear-gradient(135deg, #cf5b6d 0%, #8f2d40 65%, #631827 100%);
+            border-radius: 10px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45), inset 0 2px 6px rgba(255, 230, 235, 0.4);
+            z-index: 3;
+            transition: transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.6s ease;
+        }
+
+        /* Lid Ribbon */
+        .gift-lid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 100%;
+            background: linear-gradient(90deg, #d4a33b, #fbf1d8, #ecc56e, #b88424);
+        }
+
+        /* Luxury Ribbon Bow */
+        .gift-bow {
+            position: absolute;
+            top: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 96px;
+            height: 40px;
+            z-index: 4;
+            transition: transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.6s ease;
+        }
+
+        .bow-loop-left, .bow-loop-right {
+            position: absolute;
+            top: 4px;
+            width: 44px;
+            height: 30px;
+            border: 6px solid #f5dfa8;
+            border-radius: 50% 50% 10% 50%;
+            background: linear-gradient(135deg, rgba(251, 241, 216, 0.4), rgba(212, 163, 59, 0.7));
+            box-shadow: 0 4px 12px rgba(212, 163, 59, 0.45);
+        }
+
+        .bow-loop-left {
+            left: 4px;
+            transform: rotate(-18deg);
+        }
+
+        .bow-loop-right {
+            right: 4px;
+            border-radius: 50% 50% 50% 10%;
+            transform: rotate(18deg);
+        }
+
+        .bow-knot {
+            position: absolute;
+            top: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            background: radial-gradient(circle at 30% 30%, #fbf1d8, #d4a33b);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        /* Pulsing Glow Ring Behind Gift */
+        .pulse-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            border: 2px solid rgba(236, 197, 110, 0.45);
+            box-shadow: 0 0 35px rgba(232, 144, 156, 0.35);
+            animation: pulseGlow 2.4s infinite ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: translate(-50%, -50%) scale(0.88); opacity: 0.85; }
+            100% { transform: translate(-50%, -50%) scale(1.45); opacity: 0; }
+        }
+
+        /* Gift Opening Animation State */
+        .gift-opened .gift-lid {
+            transform: translateY(-95px) rotate(-18deg) scale(0.9);
+            opacity: 0;
+        }
+
+        .gift-opened .gift-bow {
+            transform: translate(-50%, -115px) rotate(12deg) scale(0.9);
+            opacity: 0;
+        }
+
+        .gift-opened .gift-body {
+            animation: boxPop 0.6s ease forwards;
+        }
+
+        @keyframes boxPop {
+            0% { transform: scale(1); }
+            40% { transform: scale(1.12, 0.88); }
+            70% { transform: scale(0.95, 1.05); }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        /* Glassmorphic Romantic Card */
+        .glass-card {
+            background: linear-gradient(145deg, rgba(56, 18, 37, 0.72), rgba(28, 9, 19, 0.86));
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(245, 223, 168, 0.24);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        }
+
+        /* 3D Flip Card Styling for Love Coupons */
+        .coupon-perspective {
+            perspective: 1000px;
+        }
+
+        .coupon-inner {
+            position: relative;
+            width: 100%;
+            height: 175px;
+            transition: transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .coupon-inner.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .coupon-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .coupon-front {
+            background: linear-gradient(135deg, rgba(181, 73, 90, 0.35), rgba(56, 18, 37, 0.9));
+            border: 1.5px dashed rgba(236, 197, 110, 0.55);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+        }
+
+        .coupon-back {
+            background: linear-gradient(135deg, #fbf1d8 0%, #f3d699 100%);
+            color: #2c0d1b;
+            transform: rotateY(180deg);
+            border: 2px solid #d4a33b;
+            box-shadow: 0 12px 30px rgba(212, 163, 59, 0.3);
+        }
+
+        /* Shimmer Button Effect */
+        .shimmer-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shimmer-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 40%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            transform: rotate(25deg);
+            animation: shimmerSweep 3.5s infinite;
+        }
+
+        @keyframes shimmerSweep {
+            0% { left: -60%; }
+            45%, 100% { left: 140%; }
+        }
+
+        /* Smooth Reveal Transition */
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-rosegold-500 selection:text-white">
+
+    <!-- Ambient Background Glow Orbs -->
+    <div class="glow-orb w-72 h-72 bg-rosegold-500 top-10 -left-16"></div>
+    <div class="glow-orb w-80 h-80 bg-champagne-500 bottom-10 -right-20" style="animation-delay: -5s;"></div>
+
+    <!-- Container for Floating Ambient Hearts -->
+    <div id="floating-hearts-layer" aria-hidden="true"></div>
+
+    <!-- Fullscreen Confetti & Burst Canvas -->
+    <canvas id="celebration-canvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
+
+    <!-- Floating Top Controls (Sound Toggle & Customize Button) -->
+    <header class="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-4 py-3 sm:px-6 pointer-events-none">
+        <button id="edit-btn" type="button"
+            class="pointer-events-auto flex items-center gap-2 px-3.5 py-2 rounded-full glass-card text-xs sm:text-sm font-medium text-champagne-200 hover:text-white hover:border-champagne-400 transition active:scale-95 shadow-lg"
+            title="Personalize Letter & Gifts">
+            <svg class="w-4 h-4 text-champagne-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125" />
+            </svg>
+            <span>Personalize</span>
+        </button>
+
+        <button id="sound-toggle-btn" type="button"
+            class="pointer-events-auto flex items-center gap-2 px-3.5 py-2 rounded-full glass-card text-xs sm:text-sm font-medium text-champagne-200 hover:text-white hover:border-champagne-400 transition active:scale-95 shadow-lg"
+            aria-label="Toggle Celebration Music">
+            <span id="sound-icon-on">
+                <svg class="w-4 h-4 text-champagne-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                </svg>
+            </span>
+            <span id="sound-icon-off" class="hidden">
+                <svg class="w-4 h-4 text-rosegold-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                </svg>
+            </span>
+            <span id="sound-label">Sound On</span>
+        </button>
+    </header>
+
+    <!-- STAGE 1: WRAPPED GIFT LANDING EXPERIENCE -->
+    <main id="intro-stage" class="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 text-center transition-opacity duration-700">
+        <div class="mb-3 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rosegold-500/15 border border-rosegold-300/30 text-rosegold-200 text-xs tracking-widest uppercase">
+            <span>✨ A Special Surprise For You ✨</span>
+        </div>
+
+        <h1 class="font-serif text-3xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-champagne-200 via-rosegold-200 to-champagne-300 mb-2 leading-tight">
+            For My Beloved <span id="intro-recipient-name">Fiancé</span>
+        </h1>
+        <p class="text-rosegold-200/80 text-sm sm:text-base max-w-md mb-10">
+            Every day with you feels like a celebration, but today is all about you.
+        </p>
+
+        <!-- Interactive 3D Gift Box -->
+        <div class="gift-stage relative flex items-center justify-center my-4">
+            <div class="pulse-ring"></div>
+            <div id="gift-box" class="gift-box-container" role="button" tabindex="0" aria-label="Tap to open your birthday gift">
+                <div class="gift-bow">
+                    <div class="bow-loop-left"></div>
+                    <div class="bow-loop-right"></div>
+                    <div class="bow-knot"></div>
+                </div>
+                <div class="gift-lid"></div>
+                <div class="gift-body"></div>
+            </div>
+        </div>
+
+        <!-- Tap Prompt -->
+        <button id="open-gift-cta" type="button"
+            class="mt-10 px-7 py-3.5 rounded-full bg-gradient-to-r from-rosegold-500 via-rosegold-600 to-velvet-700 border border-champagne-300/50 text-champagne-200 font-semibold text-sm sm:text-base tracking-wide shadow-xl shadow-rosegold-600/30 animate-bounce active:scale-95 transition">
+            🎁 Tap to Open Your Gift
+        </button>
+    </main>
+
+    <!-- STAGE 2: REVEALED BIRTHDAY WISH & VIRTUAL GIFT EXPERIENCE -->
+    <section id="reveal-stage" class="hidden relative z-10 max-w-2xl mx-auto px-4 pt-20 pb-16 sm:px-6">
+        
+        <!-- Celebration Header -->
+        <div class="reveal-section text-center mb-8">
+            <p class="font-script text-3xl sm:text-4xl text-champagne-300 mb-1">Happy Birthday, My Soulmate</p>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight">
+                To My Forever, <span id="card-recipient-name" class="text-transparent bg-clip-text bg-gradient-to-r from-champagne-200 to-rosegold-300">My Love</span>
+            </h2>
+            <div class="mt-3 flex items-center justify-center gap-3">
+                <span class="h-px w-12 bg-gradient-to-r from-transparent to-champagne-400"></span>
+                <span class="text-champagne-400 text-sm">♥</span>
+                <span class="h-px w-12 bg-gradient-to-l from-transparent to-champagne-400"></span>
+            </div>
+        </div>
+
+        <!-- Heartfelt Love Letter Card -->
+        <article class="reveal-section glass-card rounded-3xl p-6 sm:p-9 mb-8 relative overflow-hidden">
+            <!-- Decorative Corner Flourishes -->
+            <div class="absolute top-3 right-4 text-champagne-400/30 text-3xl select-none">❝</div>
+            
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-xs uppercase tracking-widest text-champagne-300 font-semibold">A Letter From My Heart</span>
+                <span id="letter-date-badge" class="text-xs text-rosegold-200/70 bg-white/5 px-3 py-1 rounded-full">Your Special Day</span>
+            </div>
+
+            <div id="love-letter-body" class="space-y-4 text-rosegold-100/95 text-base sm:text-lg leading-relaxed font-normal">
+                <p>Happy Birthday to the person who makes my world brighter, warmer, and infinitely happier every single day.</p>
+                <p>Calling you my fiancé is still my favorite thing in the world. Thank you for being my best friend, my safe place, and my greatest adventure. I cannot wait to celebrate this birthday—and every birthday for the rest of our lives—by your side.</p>
+                <p>Here is to your dreams, your smile, and all the magic waiting ahead for us.</p>
+            </div>
+
+            <div class="mt-7 pt-5 border-t border-white/10 flex items-end justify-between">
+                <div>
+                    <p class="text-xs uppercase tracking-widest text-rosegold-300/80 mb-1">Forever & Always Yours,</p>
+                    <p id="card-sender-name" class="font-script text-3xl sm:text-4xl text-champagne-300">Your Fiancé(e)</p>
+                </div>
+                <div class="w-11 h-11 rounded-full bg-rosegold-500/20 border border-champagne-300/40 flex items-center justify-center text-xl shadow-inner">
+                    💍
+                </div>
+            </div>
+        </article>
+
+        <!-- Interactive Love Coupons / Virtual Gifts Section -->
+        <div class="reveal-section mb-9">
+            <div class="text-center mb-5">
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-champagne-200">Your Birthday Gift Vouchers</h3>
+                <p class="text-xs sm:text-sm text-rosegold-200/80 mt-1">Tap each golden card to unwrap your virtual birthday surprises ✨</p>
+            </div>
+
+            <div id="coupons-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <!-- Coupon 1 -->
+                <div class="coupon-perspective" onclick="toggleCoupon(this)">
+                    <div class="coupon-inner">
+                        <!-- Front (Wrapped Voucher) -->
+                        <div class="coupon-face coupon-front flex flex-col items-center justify-center p-4 text-center">
+                            <span class="text-3xl mb-2">🕯️</span>
+                            <span class="text-xs uppercase tracking-widest text-champagne-300 font-semibold">Gift Voucher #1</span>
+                            <p class="font-serif text-lg text-white mt-1">Tap to Reveal</p>
+                            <span class="mt-3 text-[11px] px-3 py-1 rounded-full bg-champagne-400/20 text-champagne-200">✨ Unwrap Surprise</span>
+                        </div>
+                        <!-- Back (Revealed Gift) -->
+                        <div class="coupon-face coupon-back flex flex-col items-center justify-center p-4 text-center">
+                            <span class="text-[10px] uppercase tracking-widest font-bold text-velvet-800 bg-velvet-900/10 px-2.5 py-0.5 rounded-full mb-1.5">Redeemable Anytime</span>
+                            <h4 id="coupon-1-title" class="font-serif font-bold text-lg leading-snug text-velvet-950">Romantic Candlelight Dinner</h4>
+                            <p id="coupon-1-desc" class="text-xs text-velvet-800 mt-1.5 leading-relaxed">Your favorite restaurant or a 3-course homemade feast cooked with love.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coupon 2 -->
+                <div class="coupon-perspective" onclick="toggleCoupon(this)">
+                    <div class="coupon-inner">
+                        <div class="coupon-face coupon-front flex flex-col items-center justify-center p-4 text-center">
+                            <span class="text-3xl mb-2">💆‍♂️</span>
+                            <span class="text-xs uppercase tracking-widest text-champagne-300 font-semibold">Gift Voucher #2</span>
+                            <p class="font-serif text-lg text-white mt-1">Tap to Reveal</p>
+                            <span class="mt-3 text-[11px] px-3 py-1 rounded-full bg-champagne-400/20 text-champagne-200">✨ Unwrap Surprise</span>
+                        </div>
+                        <div class="coupon-face coupon-back flex flex-col items-center justify-center p-4 text-center">
+                            <span class="text-[10px] uppercase tracking-widest font-bold text-velvet-800 bg-velvet-900/10 px-2.5 py-0.5 rounded-full mb-1.5">VIP Pass</span>
+                            <h4 id="coupon-2-title" class="font-serif font-bold text-lg leading-snug text-velvet-950">Full Spa & Massage Night</h4>
+                            <p id="coupon-2-desc" class="text-xs text-velvet-800 mt-1.5 leading-relaxed">Zero chores, warm scented oils, and a 45-minute relaxing massage.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coupon 3 -->
+                <div class="coupon-perspective" onclick="toggleCoupon(this)">
+                    <div class="coupon-inner">
+                        <div class="coupon-face coupon-front flex flex-col items-center justify-center p-4 text-center">
+                            <span class="text-3xl mb-2">✈️</span>
+                            <span class="text-xs uppercase tracking-widest text-champagne-300 font-semibold">Gift Voucher #3</span>
+                            <p class="font-serif text-lg text-white mt-1">Tap to Reveal</p>
+                            <span class="mt-3 text-[11px] px-3 py-1 rounded-full bg-champagne-400/20 text-champagne-200">✨ Unwrap Surprise</span>
+                        </div>
+                        <div class="coupon-face coupon-back flex flex-col items-center justify-center p-4 text-center">
+                            <span class="text-[10px] uppercase tracking-widest font-bold text-velvet-800 bg-velvet-900/10 px-2.5 py-0.5 rounded-full mb-1.5">Golden Ticket</span>
+                            <h4 id="coupon-3-title" class="font-serif font-bold text-lg leading-snug text-velvet-950">Spontaneous Weekend Getaway</h4>
+                            <p id="coupon-3-desc" class="text-xs text-velvet-800 mt-1.5 leading-relaxed">Pack your bags—you pick the destination, and I will plan every detail!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Action Bar: Send More Love & Confetti -->
+        <div class="reveal-section flex flex-col items-center gap-3 text-center">
+            <button id="more-love-btn" type="button"
+                class="shimmer-btn w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-champagne-400 via-champagne-300 to-rosegold-300 text-velvet-950 font-bold text-base shadow-xl shadow-champagne-500/25 hover:brightness-105 active:scale-95 transition flex items-center justify-center gap-2.5">
+                <span>💖 Send More Love & Confetti</span>
+            </button>
+
+            <div class="flex items-center gap-4 mt-2">
+                <button id="replay-box-btn" type="button" class="text-xs text-rosegold-300/80 hover:text-champagne-200 underline underline-offset-4 py-2 px-3">
+                    Re-wrap Gift Box
+                </button>
+                <span class="text-rosegold-500/40">•</span>
+                <button id="share-link-btn" type="button" class="text-xs text-rosegold-300/80 hover:text-champagne-200 underline underline-offset-4 py-2 px-3">
+                    Copy Personalized Link
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOAST NOTIFICATION (Replaces alert() cleanly) -->
+    <div id="toast-banner" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-full glass-card border border-champagne-400/50 text-champagne-200 text-xs sm:text-sm font-medium shadow-2xl opacity-0 pointer-events-none transition-all duration-300 translate-y-4">
+        ✨ Personalized message saved!
+    </div>
+
+    <!-- CUSTOMIZATION MODAL -->
+    <div id="customize-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+        <div class="glass-card w-full max-w-lg rounded-3xl p-6 sm:p-7 max-h-[90vh] overflow-y-auto border border-champagne-300/35 shadow-2xl">
+            <div class="flex items-center justify-between pb-4 border-b border-white/10">
+                <div>
+                    <h3 class="font-serif text-xl sm:text-2xl font-bold text-champagne-200">Personalize Your Gift</h3>
+                    <p class="text-xs text-rosegold-200/75">Customize names, love note, and gift vouchers</p>
+                </div>
+                <button id="close-modal-btn" type="button" class="p-2 rounded-full hover:bg-white/10 text-rosegold-200 transition" aria-label="Close modal">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <form id="customize-form" class="mt-5 space-y-4 text-left">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div>
+                        <label class="block text-xs font-medium text-champagne-200 mb-1">Fiancé's Name / Pet Name</label>
+                        <input id="input-recipient" type="text" placeholder="e.g., Alex / My Love"
+                            class="w-full px-3.5 py-2.5 rounded-xl bg-velvet-950/80 border border-rosegold-300/25 text-white text-sm focus:outline-none focus:border-champagne-400">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-champagne-200 mb-1">Your Name (Signed)</label>
+                        <input id="input-sender" type="text" placeholder="e.g., Sam"
+                            class="w-full px-3.5 py-2.5 rounded-xl bg-velvet-950/80 border border-rosegold-300/25 text-white text-sm focus:outline-none focus:border-champagne-400">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-champagne-200 mb-1">Birthday Love Letter</label>
+                    <textarea id="input-message" rows="4"
+                        class="w-full px-3.5 py-2.5 rounded-xl bg-velvet-950/80 border border-rosegold-300/25 text-white text-sm leading-relaxed focus:outline-none focus:border-champagne-400"></textarea>
+                </div>
+
+                <div class="pt-2 border-t border-white/10">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-champagne-300 mb-2.5">Virtual Gift Vouchers</p>
+                    <div class="space-y-3">
+                        <div class="p-3 rounded-xl bg-white/5 space-y-2">
+                            <input id="input-c1-title" type="text" placeholder="Voucher 1 Title"
+                                class="w-full px-3 py-1.5 rounded-lg bg-velvet-950/80 border border-rosegold-300/20 text-white text-xs font-semibold focus:outline-none focus:border-champagne-400">
+                            <input id="input-c1-desc" type="text" placeholder="Voucher 1 Description"
+                                class="w-full px-3 py-1.5 rounded-lg bg-velvet-950/80 border border-rosegold-300/20 text-rosegold-100 text-xs focus:outline-none focus:border-champagne-400">
+                        </div>
+                        <div class="p-3 rounded-xl bg-white/5 space-y-2">
+                            <input id="input-c2-title" type="text" placeholder="Voucher 2 Title"
+                                class="w-full px-3 py-1.5 rounded-lg bg-velvet-950/80 border border-rosegold-300/20 text-white text-xs font-semibold focus:outline-none focus:border-champagne-400">
+                            <input id="input-c2-desc" type="text" placeholder="Voucher 2 Description"
+                                class="w-full px-3 py-1.5 rounded-lg bg-velvet-950/80 border border-rosegold-300/20 text-rosegold-100 text-xs focus:outline-none focus:border-champagne-400">
+                        </div>
+                        <div class="p-3 rounded-xl bg-white/5 space-y-2">
+                            <input id="input-c3-title" type="text" placeholder="Voucher 3 Title"
+                                class="w-full px-3 py-1.5 rounded-lg bg-velvet-950/80 border border-rosegold-300/20 text-white text-xs font-semibold focus:outline-none focus:border-champagne-400">
+                            <input id="input-c3-desc" type="text" placeholder="Voucher 3 Description"
+                                class="w-full px-3 py-1.5 rounded-lg bg-velvet-950/80 border border-rosegold-300/20 text-rosegold-100 text-xs focus:outline-none focus:border-champagne-400">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-3 flex items-center justify-end gap-3">
+                    <button type="button" id="cancel-modal-btn" class="px-4 py-2.5 rounded-full text-xs font-medium text-rosegold-200 hover:bg-white/10 transition">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-champagne-400 to-rosegold-400 text-velvet-950 font-bold text-xs sm:text-sm shadow-lg active:scale-95 transition">
+                        Save & Update Gift
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * ============================================================================
+         * 1. STATE & PERSONALIZATION MANAGEMENT (Supports URL Params & LocalStorage)
+         * ============================================================================
+         */
+        const DEFAULT_DATA = {
+            recipient: "My Love",
+            sender: "Your Fiancé(e)",
+            message: "Happy Birthday to the person who makes my world brighter, warmer, and infinitely happier every single day.\n\nCalling you my fiancé is still my favorite thing in the world. Thank you for being my best friend, my safe place, and my greatest adventure. I cannot wait to celebrate this birthday—and every birthday for the rest of our lives—by your side.\n\nHere is to your dreams, your smile, and all the magic waiting ahead for us.",
+            c1Title: "Romantic Candlelight Dinner",
+            c1Desc: "Your favorite restaurant or a 3-course homemade feast cooked with love.",
+            c2Title: "Full Spa & Massage Night",
+            c2Desc: "Zero chores, warm scented oils, and a 45-minute relaxing massage.",
+            c3Title: "Spontaneous Weekend Getaway",
+            c3Desc: "Pack your bags—you pick the destination, and I will plan every detail!"
+        };
+
+        let appData = { ...DEFAULT_DATA };
+
+        // Load saved customization from URL query params first (for sharing), then localStorage
+        function loadPersonalization() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const savedLocal = localStorage.getItem('fiance_birthday_gift_v1');
+                if (savedLocal) {
+                    appData = { ...appData, ...JSON.parse(savedLocal) };
+                }
+                if (params.has('to')) appData.recipient = params.get('to');
+                if (params.has('from')) appData.sender = params.get('from');
+                if (params.has('msg')) appData.message = params.get('msg');
+                if (params.has('c1t')) appData.c1Title = params.get('c1t');
+                if (params.has('c1d')) appData.c1Desc = params.get('c1d');
+                if (params.has('c2t')) appData.c2Title = params.get('c2t');
+                if (params.has('c2d')) appData.c2Desc = params.get('c2d');
+                if (params.has('c3t')) appData.c3Title = params.get('c3t');
+                if (params.has('c3d')) appData.c3Desc = params.get('c3d');
+            } catch (e) {
+                console.warn("Could not parse saved personalization:", e);
+            }
+            applyDataToDOM();
+        }
+
+        // Safely render user text into the UI
+        function applyDataToDOM() {
+            document.getElementById('intro-recipient-name').textContent = appData.recipient || "Fiancé";
+            document.getElementById('card-recipient-name').textContent = appData.recipient || "My Love";
+            document.getElementById('card-sender-name').textContent = appData.sender || "Your Fiancé(e)";
+
+            // Render paragraphs cleanly
+            const letterContainer = document.getElementById('love-letter-body');
+            letterContainer.innerHTML = '';
+            const paragraphs = (appData.message || DEFAULT_DATA.message).split(/\n+/).filter(p => p.trim() !== '');
+            paragraphs.forEach(text => {
+                const p = document.createElement('p');
+                p.textContent = text;
+                letterContainer.appendChild(p);
+            });
+
+            // Update coupons
+            document.getElementById('coupon-1-title').textContent = appData.c1Title;
+            document.getElementById('coupon-1-desc').textContent = appData.c1Desc;
+            document.getElementById('coupon-2-title').textContent = appData.c2Title;
+            document.getElementById('coupon-2-desc').textContent = appData.c2Desc;
+            document.getElementById('coupon-3-title').textContent = appData.c3Title;
+            document.getElementById('coupon-3-desc').textContent = appData.c3Desc;
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast-banner');
+            toast.textContent = message;
+            toast.classList.remove('opacity-0', 'translate-y-4');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            clearTimeout(window._toastTimer);
+            window._toastTimer = setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-4');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+            }, 2800);
+        }
+
+        /**
+         * ============================================================================
+         * 2. WEB AUDIO API SYNTHESIZED ROMANTIC BIRTHDAY MELODY & CHIMES
+         * ============================================================================
+         */
+        let audioCtx = null;
+        let isMuted = false;
+
+        function initAudio() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                if (AudioContextClass) {
+                    audioCtx = new AudioContextClass();
+                }
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        // Play a warm music-box / harp note
+        function playNote(freq, startTime, duration, volume = 0.14) {
+            if (isMuted || !audioCtx) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const shimmerOsc = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, startTime);
+
+                // Subtle harmonic octave overtone for music-box sparkle
+                shimmerOsc.type = 'triangle';
+                shimmerOsc.frequency.setValueAtTime(freq * 2, startTime);
+
+                const shimmerGain = audioCtx.createGain();
+                shimmerGain.gain.setValueAtTime(0.025, startTime);
+
+                gainNode.gain.setValueAtTime(0.0001, startTime);
+                gainNode.gain.exponentialRampToValueAtTime(volume, startTime + 0.03);
+                gainNode.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+
+                osc.connect(gainNode);
+                shimmerOsc.connect(shimmerGain);
+                shimmerGain.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+
+                osc.start(startTime);
+                shimmerOsc.start(startTime);
+                osc.stop(startTime + duration + 0.05);
+                shimmerOsc.stop(startTime + duration + 0.05);
+            } catch (e) {
+                // Ignore audio errors on restricted devices
+            }
+        }
+
+        // Play celebratory "Happy Birthday" music-box chime melody
+        function playBirthdayMelody() {
+            initAudio();
+            if (isMuted || !audioCtx) return;
+
+            const now = audioCtx.currentTime + 0.05;
+            // Notes in Hz (Key of F Major - warm and romantic)
+            const C4 = 261.63, D4 = 293.66, E4 = 329.63, F4 = 349.23,
+                  G4 = 392.00, A4 = 440.00, Bb4 = 466.16, C5 = 523.25;
+
+            const melody = [
+                { f: C4, t: 0.0, d: 0.35 },
+                { f: C4, t: 0.38, d: 0.25 },
+                { f: D4, t: 0.68, d: 0.55 },
+                { f: C4, t: 1.28, d: 0.55 },
+                { f: F4, t: 1.88, d: 0.55 },
+                { f: E4, t: 2.48, d: 1.05 },
+
+                { f: C4, t: 3.65, d: 0.35 },
+                { f: C4, t: 4.03, d: 0.25 },
+                { f: D4, t: 4.33, d: 0.55 },
+                { f: C4, t: 4.93, d: 0.55 },
+                { f: G4, t: 5.53, d: 0.55 },
+                { f: F4, t: 6.13, d: 1.15 },
+
+                // Sparkling final arpeggio chord
+                { f: F4, t: 7.45, d: 1.2 },
+                { f: A4, t: 7.60, d: 1.2 },
+                { f: C5, t: 7.75, d: 1.5 }
+            ];
+
+            melody.forEach(note => playNote(note.f, now + note.t, note.d));
+        }
+
+        // Short sparkle chime for voucher flips & heart bursts
+        function playSparkleChime() {
+            initAudio();
+            if (isMuted || !audioCtx) return;
+            const now = audioCtx.currentTime;
+            [523.25, 659.25, 783.99, 1046.50].forEach((freq, idx) => {
+                playNote(freq, now + idx * 0.07, 0.55, 0.09);
+            });
+        }
+
+        // Mute / Unmute Toggle
+        document.getElementById('sound-toggle-btn').addEventListener('click', () => {
+            isMuted = !isMuted;
+            document.getElementById('sound-icon-on').classList.toggle('hidden', isMuted);
+            document.getElementById('sound-icon-off').classList.toggle('hidden', !isMuted);
+            document.getElementById('sound-label').textContent = isMuted ? 'Muted' : 'Sound On';
+            if (!isMuted) {
+                playSparkleChime();
+            }
+        });
+
+        /**
+         * ============================================================================
+         * 3. CANVAS CONFETTI & ROMANTIC HEART PARTICLE ENGINE
+         * ============================================================================
+         */
+        const canvas = document.getElementById('celebration-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationFrameId = null;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const CONFETTI_COLORS = [
+            '#ecc56e', // Champagne Gold
+            '#fbf1d8', // Soft Ivory Gold
+            '#e8909c', // Rose Gold
+            '#f8d7da', // Blush Pink
+            '#d46a7a', // Deep Rose
+            '#ffffff'  // Pure Sparkle
+        ];
+
+        function createBurst(originX, originY, count = 95) {
+            for (let i = 0; i < count; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 11 + 4;
+                const isHeart = Math.random() < 0.32;
+                particles.push({
+                    x: originX,
+                    y: originY,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed - 4.5,
+                    size: isHeart ? (Math.random() * 9 + 8) : (Math.random() * 7 + 5),
+                    color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+                    rotation: Math.random() * 360,
+                    rotationSpeed: (Math.random() - 0.5) * 10,
+                    gravity: 0.22 + Math.random() * 0.08,
+                    drag: 0.97,
+                    opacity: 1,
+                    isHeart: isHeart
+                });
+            }
+            if (!animationFrameId) {
+                animateParticles();
+            }
+        }
+
+        function drawHeartShape(x, y, size, color, rotation, opacity) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate((rotation * Math.PI) / 180);
+            ctx.globalAlpha = opacity;
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            const topCurveHeight = size * 0.3;
+            ctx.moveTo(0, topCurveHeight);
+            ctx.bezierCurveTo(0, 0, -size / 2, 0, -size / 2, topCurveHeight);
+            ctx.bezierCurveTo(-size / 2, (size + topCurveHeight) / 2, 0, (size + topCurveHeight) / 1.3, 0, size);
+            ctx.bezierCurveTo(0, (size + topCurveHeight) / 1.3, size / 2, (size + topCurveHeight) / 2, size / 2, topCurveHeight);
+            ctx.bezierCurveTo(size / 2, 0, 0, 0, 0, topCurveHeight);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.vx *= p.drag;
+                p.vy = p.vy * p.drag + p.gravity;
+                p.x += p.vx;
+                p.y += p.vy;
+                p.rotation += p.rotationSpeed;
+
+                if (p.y > canvas.height * 0.75) {
+                    p.opacity -= 0.022;
+                }
+
+                if (p.opacity <= 0 || p.y > canvas.height + 40) {
+                    particles.splice(i, 1);
+                    continue;
+                }
+
+                if (p.isHeart) {
+                    drawHeartShape(p.x, p.y, p.size, p.color, p.rotation, p.opacity);
+                } else {
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate((p.rotation * Math.PI) / 180);
+                    ctx.globalAlpha = p.opacity;
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size * 0.55);
+                    ctx.restore();
+                }
+            }
+
+            if (particles.length > 0) {
+                animationFrameId = requestAnimationFrame(animateParticles);
+            } else {
+                animationFrameId = null;
+            }
+        }
+
+        /**
+         * ============================================================================
+         * 4. AMBIENT FLOATING HEARTS GENERATOR
+         * ============================================================================
+         */
+        function spawnAmbientHeart() {
+            const layer = document.getElementById('floating-hearts-layer');
+            if (!layer) return;
+
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            const symbols = ['♥', '♡', '✨', '💕'];
+            heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+            const leftPos = Math.random() * 95;
+            const duration = 7 + Math.random() * 6;
+            const size = 12 + Math.random() * 14;
+            const colors = ['#e8909c', '#ecc56e', '#f8d7da', '#d46a7a'];
+
+            heart.style.left = `${leftPos}vw`;
+            heart.style.fontSize = `${size}px`;
+            heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+            heart.style.animationDuration = `${duration}s`;
+
+            layer.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        // Spawn gentle hearts continuously
+        setInterval(spawnAmbientHeart, 1100);
+
+        /**
+         * ============================================================================
+         * 5. INTERACTIVE GIFT OPENING & COUPON FLIP LOGIC
+         * ============================================================================
+         */
+        const giftBox = document.getElementById('gift-box');
+        const openGiftCta = document.getElementById('open-gift-cta');
+        const introStage = document.getElementById('intro-stage');
+        const revealStage = document.getElementById('reveal-stage');
+        let isOpened = false;
+
+        function handleOpenGift() {
+            if (isOpened) return;
+            isOpened = true;
+
+            // 1. Trigger gift lid animation
+            giftBox.classList.add('gift-opened');
+            openGiftCta.style.opacity = '0';
+            openGiftCta.style.pointerEvents = 'none';
+
+            // 2. Play celebratory birthday chime melody
+            playBirthdayMelody();
+
+            // 3. Fire vibrant confetti bursts from box center & sides
+            const rect = giftBox.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            createBurst(centerX, centerY, 120);
+            setTimeout(() => createBurst(canvas.width * 0.25, canvas.height * 0.35, 65), 320);
+            setTimeout(() => createBurst(canvas.width * 0.75, canvas.height * 0.35, 65), 520);
+
+            // 4. Transition to the Birthday Card & Vouchers
+            setTimeout(() => {
+                introStage.classList.add('opacity-0');
+                setTimeout(() => {
+                    introStage.classList.add('hidden');
+                    revealStage.classList.remove('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                    // Stagger reveal sections smoothly
+                    const sections = document.querySelectorAll('.reveal-section');
+                    sections.forEach((sec, index) => {
+                        setTimeout(() => {
+                            sec.classList.add('visible');
+                        }, index * 220);
+                    });
+                }, 450);
+            }, 650);
+        }
+
+        giftBox.addEventListener('click', handleOpenGift);
+        giftBox.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleOpenGift();
+            }
+        });
+        openGiftCta.addEventListener('click', handleOpenGift);
+
+        // Toggle Flip on Virtual Gift Vouchers
+        function toggleCoupon(cardWrapper) {
+            const inner = cardWrapper.querySelector('.coupon-inner');
+            const wasFlipped = inner.classList.contains('is-flipped');
+            inner.classList.toggle('is-flipped');
+
+            if (!wasFlipped) {
+                playSparkleChime();
+                const rect = cardWrapper.getBoundingClientRect();
+                createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 40);
+            }
+        }
+
+        // "Send More Love & Confetti" Button
+        document.getElementById('more-love-btn').addEventListener('click', (e) => {
+            playSparkleChime();
+            const rect = e.currentTarget.getBoundingClientRect();
+            createBurst(rect.left + rect.width / 2, rect.top, 85);
+            for (let i = 0; i < 6; i++) {
+                setTimeout(spawnAmbientHeart, i * 120);
+            }
+        });
+
+        // Re-wrap Gift Box Option
+        document.getElementById('replay-box-btn').addEventListener('click', () => {
+            isOpened = false;
+            giftBox.classList.remove('gift-opened');
+            openGiftCta.style.opacity = '1';
+            openGiftCta.style.pointerEvents = 'auto';
+
+            document.querySelectorAll('.reveal-section').forEach(sec => sec.classList.remove('visible'));
+            document.querySelectorAll('.coupon-inner').forEach(c => c.classList.remove('is-flipped'));
+
+            revealStage.classList.add('hidden');
+            introStage.classList.remove('hidden', 'opacity-0');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        /**
+         * ============================================================================
+         * 6. PERSONALIZATION MODAL & SHAREABLE LINK
+         * ============================================================================
+         */
+        const modal = document.getElementById('customize-modal');
+
+        document.getElementById('edit-btn').addEventListener('click', () => {
+            document.getElementById('input-recipient').value = appData.recipient;
+            document.getElementById('input-sender').value = appData.sender;
+            document.getElementById('input-message').value = appData.message;
+            document.getElementById('input-c1-title').value = appData.c1Title;
+            document.getElementById('input-c1-desc').value = appData.c1Desc;
+            document.getElementById('input-c2-title').value = appData.c2Title;
+            document.getElementById('input-c2-desc').value = appData.c2Desc;
+            document.getElementById('input-c3-title').value = appData.c3Title;
+            document.getElementById('input-c3-desc').value = appData.c3Desc;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        });
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+        document.getElementById('cancel-modal-btn').addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        document.getElementById('customize-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            appData = {
+                recipient: document.getElementById('input-recipient').value.trim() || DEFAULT_DATA.recipient,
+                sender: document.getElementById('input-sender').value.trim() || DEFAULT_DATA.sender,
+                message: document.getElementById('input-message').value.trim() || DEFAULT_DATA.message,
+                c1Title: document.getElementById('input-c1-title').value.trim() || DEFAULT_DATA.c1Title,
+                c1Desc: document.getElementById('input-c1-desc').value.trim() || DEFAULT_DATA.c1Desc,
+                c2Title: document.getElementById('input-c2-title').value.trim() || DEFAULT_DATA.c2Title,
+                c2Desc: document.getElementById('input-c2-desc').value.trim() || DEFAULT_DATA.c2Desc,
+                c3Title: document.getElementById('input-c3-title').value.trim() || DEFAULT_DATA.c3Title,
+                c3Desc: document.getElementById('input-c3-desc').value.trim() || DEFAULT_DATA.c3Desc,
+            };
+
+            try {
+                localStorage.setItem('fiance_birthday_gift_v1', JSON.stringify(appData));
+            } catch (err) {
+                console.warn("LocalStorage unavailable:", err);
+            }
+
+            applyDataToDOM();
+            closeModal();
+            showToast("✨ Your love letter & gift vouchers are updated!");
+        });
+
+        // Copy Personalized Share Link using fallback-safe execCommand
+        document.getElementById('share-link-btn').addEventListener('click', () => {
+            const url = new URL(window.location.href.split('?')[0]);
+            url.searchParams.set('to', appData.recipient);
+            url.searchParams.set('from', appData.sender);
+            url.searchParams.set('msg', appData.message);
+            url.searchParams.set('c1t', appData.c1Title);
+            url.searchParams.set('c1d', appData.c1Desc);
+            url.searchParams.set('c2t', appData.c2Title);
+            url.searchParams.set('c2d', appData.c2Desc);
+            url.searchParams.set('c3t', appData.c3Title);
+            url.searchParams.set('c3d', appData.c3Desc);
+
+            const tempInput = document.createElement('textarea');
+            tempInput.value = url.toString();
+            tempInput.style.position = 'fixed';
+            tempInput.style.opacity = '0';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast("💌 Personalized gift link copied to clipboard!");
+            } catch (err) {
+                showToast("✨ Ready to share! Use Personalize to edit anytime.");
+            }
+            document.body.removeChild(tempInput);
+        });
+
+        // Initialize app on window load
+        window.onload = function () {
+            loadPersonalization();
+            for (let i = 0; i < 6; i++) {
+                setTimeout(spawnAmbientHeart, i * 350);
+            }
+        };
+    </script>
+</body>
+</html>
